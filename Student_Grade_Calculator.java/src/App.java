@@ -19,23 +19,23 @@ public class App {
             subject = System.console().readLine("Please provide subject name: ");
             subjectlist.add(subject); // add string to array of subjects
 
-            if (subject == ""){
-                stop = false;
-                break;
-            }
-            
-            mark = System.console().readLine("Provide the result out of 100(in decimal form): ");
-            if (mark != ""){
+            try {
+                mark = System.console().readLine(
+                    "Provide the result out of 100(in decimal form): ");
                 Float markFloat = Float.parseFloat(mark); // convert the string to a float
                 markList.add(markFloat);  // add float to an array
                 System.err.println("");
+            } catch (Exception e) {
+                // TODO: handle exception
+                stop = false;
+                break;
             }
-
         }
 
         System.out.println(subjectlist);
         System.out.println(markList);
-
+        ArrayList<Integer> grades = GradeCalculation(markList);
+        System.out.println(grades);
     }
 
 
@@ -59,11 +59,30 @@ public class App {
 
     }
 
-    public static void GradeCalculation(){
-        
+    public static ArrayList<Integer> GradeCalculation(ArrayList<Float> markList){
+        ArrayList<Integer> gradeAssignment = new ArrayList<Integer>();
+
+        for (Float i : markList){
+            if (i >= 80.0f){
+                gradeAssignment.add(7);
+            }else if (i >= 70.0f & i < 80.0f){
+                gradeAssignment.add(6);
+            }else if (i >= 60.0f & i < 70.0f){
+                gradeAssignment.add(5);
+            }else if (i >= 50.0f & i < 60.0f){
+                gradeAssignment.add(4);
+            }else if (i >= 40.0f & i < 50.0f){
+                gradeAssignment.add(3);
+            }else if (i >= 30.0f & i < 40.0f){
+                gradeAssignment.add(2);
+            }else {
+                gradeAssignment.add(1);
+            }
+        }
+        return gradeAssignment;
     }
 
-    public static void DisplayResults(){
+    public static void DisplayResults(ArrayList<String> subjectlist, ArrayList<Float> markList, ArrayList<Integer> grades){
 
     }
 }
