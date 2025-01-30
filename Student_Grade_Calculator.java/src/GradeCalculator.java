@@ -33,15 +33,10 @@ public class GradeCalculator {
             }
         }
 
-        //System.out.println(subjectlist);
-        //System.out.println(markList);
         ArrayList<Integer> grades = GradeCalculation(markList);
-        //System.out.println(grades);
         DisplayResults(subjectlist, markList, grades);
        
     }
-
-
 
     public static Float totalMarks(ArrayList<Float> markList){
         Float total = 0.0f;
@@ -98,11 +93,11 @@ public class GradeCalculator {
                         "");
 
         System.out.println("Subject                    Mark                    Grade");
-
+        System.out.println();
         for (int i = 0; i < subjectlist.size(); i++){
             System.out.println(subjectlist.get(i)+ "                      "+markList.get(i)+"                    "+grades.get(i) );
         }
+        System.out.println();
     }
-
 
 }
