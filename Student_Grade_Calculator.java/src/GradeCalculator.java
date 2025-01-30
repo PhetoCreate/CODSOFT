@@ -1,14 +1,13 @@
-import java.awt.Color;
+
 import java.util.ArrayList;
-import javax.swing.JFrame;
+
 
 public class GradeCalculator {
     
     public static void main(String[] args) throws Exception {
-
         String subject = ""; // declaring the types
         String mark = "";
-
+        
         // Loop break
         Boolean stop = true;
 
@@ -34,10 +33,12 @@ public class GradeCalculator {
             }
         }
 
-        System.out.println(subjectlist);
-        System.out.println(markList);
+        //System.out.println(subjectlist);
+        //System.out.println(markList);
         ArrayList<Integer> grades = GradeCalculation(markList);
-        System.out.println(grades);
+        //System.out.println(grades);
+        DisplayResults(subjectlist, markList, grades);
+       
     }
 
 
@@ -85,13 +86,23 @@ public class GradeCalculator {
     }
 
     public static void DisplayResults(ArrayList<String> subjectlist, ArrayList<Float> markList, ArrayList<Integer> grades){
-        JFrame frame = new JFrame();
-        frame.setTitle("Student Grade Report Card");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit out of application
-        frame.setResizable(false); 
-        frame.setSize(500,500); //set dimensions of frame
-        frame.setVisible(true); // make frame visible
-        frame.getContentPane().setBackground(new Color(45,74,33));//(makes a nice green) or new Color(RGB VALS)//change background color
-        
+        System.out.println("\r\n" + //
+                        "______ ___________ ___________ _____   _____   ___  ____________  \r\n" + //
+                        "| ___ \\  ___| ___ \\  _  | ___ \\_   _| /  __ \\ / _ \\ | ___ \\  _  \\ \r\n" + //
+                        "| |_/ / |__ | |_/ / | | | |_/ / | |   | /  \\// /_\\ \\| |_/ / | | | \r\n" + //
+                        "|    /|  __||  __/| | | |    /  | |   | |    |  _  ||    /| | | | \r\n" + //
+                        "| |\\ \\| |___| |   \\ \\_/ / |\\ \\  | |   | \\__/\\| | | || |\\ \\| |/ /  \r\n" + //
+                        "\\_| \\_\\____/\\_|    \\___/\\_| \\_| \\_/    \\____/\\_| |_/\\_| \\_|___/   \r\n" + //
+                        "                                                                  \r\n" + //
+                        "                                                                  \r\n" + //
+                        "");
+
+        System.out.println("Subject                    Mark                    Grade");
+
+        for (int i = 0; i < subjectlist.size(); i++){
+            System.out.println(subjectlist.get(i)+ "                      "+markList.get(i)+"                    "+grades.get(i) );
+        }
     }
+
+
 }
